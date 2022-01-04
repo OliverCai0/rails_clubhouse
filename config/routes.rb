@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'posts#index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,6 +8,4 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-
-  root 'posts#index'
 end
