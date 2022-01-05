@@ -1,1 +1,7 @@
-<%= render 'devise/shared/signup' %>
+<div class="container-fluid" style="flex-grow: 1;
+    display: flex;">
+	<div class = "row" style="flex-grow: 1;">
+		<div class="col background" style="background-image: url(<%= asset_path('zig-zag-blue.jpeg') %>);"></div>
+		<div class="col container" id='form-div'><%= render 'devise/shared/signup' %></div>
+	</div>
+</div>

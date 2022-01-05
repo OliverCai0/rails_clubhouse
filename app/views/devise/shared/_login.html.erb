@@ -1,14 +1,35 @@
+<% email = [] %>
+<% password = [] %>
+<% if resource.errors.any? %>
+  <% resource.errors.full_messages.each do |message| %>
+    <% if message.include?("Email") %>
+      <% email.append(message)%>
+    <% else %>
+      <%password.append(message)%>
+    <% end %>
+  <% end %>
+<% end %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {:class => 'container'}) do |f| %>
   <h2 class="display-1">Login</h2>
-  <br/>
   <div class="field">
-    <p><%= f.label 'Username/Email', class: 'form-label display-6'%> <br/>
+    <p><%= f.label 'Username/Email', class: 'form-label display-6'%> 
       <%= f.text_field :login , class: 'form-control form-control-lg'%></p>
+      <% if email.any?%>
+      <% email.each do |message|%>
+        <p style="color: red; font-size: smaller;">* <%= message %><p>
+      <% end%>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password, class: 'form-label display-6' %><br />
+    <%= f.label :password, class: 'form-label display-6' %>
     <%= f.password_field :password, autocomplete: "current-password",class: 'form-control form-control-lg' %>
+    <% if password.any?%>
+      <% password.each do |message|%>
+        <p style="color: red; font-size: smaller;">* <%= message %><p>
+      <% end%>
+    <% end %>
   </div>
   <br/>
   <% if devise_mapping.rememberable? %>
@@ -18,10 +39,10 @@
     </div>
   <% end %>
   <div class="actions row">
-    <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+    <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
   </div>
   <div class="actions row">
-    <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
+    <%= link_to 'Register', registrations_form_path, remote: true, class: 'btn btn-secondary btn-lg' %>
   </div>
 <% end %>
 

@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_190547) do
+ActiveRecord::Schema.define(version: 2022_01_05_021224) do
+
+  create_table "clubs", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -38,10 +43,13 @@ ActiveRecord::Schema.define(version: 2022_01_03_190547) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.integer "club_id", null: false
+    t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "clubs"
 end
