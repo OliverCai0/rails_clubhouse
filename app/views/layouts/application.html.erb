@@ -10,8 +10,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+  <body style="height: 100vh;">
+    <div style="display: flex; flex-direction: column; height: 100%;">
+      <%= render 'shared/navbar' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
