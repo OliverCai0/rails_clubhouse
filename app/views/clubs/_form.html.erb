@@ -1,0 +1,23 @@
+<%= form_with(url: clubs_path, html: {:id => '#post-creation-form'}) do |form|%>
+<%= form.hidden_field :user, value: current_user[:id] %>
+	<div class="card-body">
+		<div class="field">
+			<%= form.text_field :name, class: 'form-control',placeholder: 'Name' %>
+		</div>
+		<% if @club.errors.any?%>
+			<p style="font-size: smaller;
+    				  margin-bottom: 0;
+    				  color: red;"> Name <%= @club.errors[:name][0] %></p>
+		<% end %>
+		<br/>
+		<div class="field">
+			<%= form.text_area :desc, class: 'form-control', placeholder: 'What\'s this about?'  %>
+		</div>
+		<div class="field">
+			<%= form.select (current_user.clubs)%>
+		</div>
+	</div>
+	<div class="card-footer">
+		<%= form.submit 'Submit' , class: 'btn btn-primary'%>
+	</div>
+<% end %>

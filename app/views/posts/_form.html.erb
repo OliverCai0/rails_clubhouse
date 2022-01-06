@@ -1,0 +1,15 @@
+<%= form_with(model: @post,html: {:class => '', :id => '#post-creation-form'})  do |form| %>
+	<%= form.hidden_field :user, value: current_user[:id] %>
+	<div class="card-body">
+		<div class="field">
+			<%= form.text_field :title, class: 'form-control',placeholder: 'Title' %>
+		</div>
+		<br/>
+		<div class="field">
+			<%= form.text_area :content, class: 'form-control', placeholder: 'What\'s going on?'  %>
+		</div>
+	</div>
+	<div class="card-footer">
+		<%= form.submit 'Submit' , class: 'btn btn-primary'%>
+	</div>
+<% end %>

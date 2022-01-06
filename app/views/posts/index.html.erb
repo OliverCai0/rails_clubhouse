@@ -1,0 +1,42 @@
+<% if user_signed_in? %>
+	<div style='display: flex;
+    justify-content: center;'>
+    	<div style="flex-grow: 1; background-image: url(<%= asset_path('zig-zag-blue.jpeg')%>);" class="background">
+    	</div>
+    	<div style="width: 50%;" class="card">
+    	<div class="card-header">
+    		<%= link_to 'New Post', new_post_path, remote: true , class: 'btn btn-primary'%>
+    		<%= link_to 'New Club', new_club_path, remote: true , class: 'btn btn-primary'%>
+    	</div>
+<!-- 			<div id='new-form' class="container" style="width:50%;margin-top: 2.5%;"> -->
+				<div id= 'form-submission'>
+				<% unless @club_bttn%>
+					<%= render 'form'%>
+				<% else %>
+					<%= render 'clubs/form' %>
+				<% end %>
+				</div>
+<!-- 			</div> -->
+			</div>
+		<div style="flex-grow: 1; background-image: url(<%= asset_path('zig-zag-blue.jpeg')%>);" class="background">
+		</div>
+	</div>
+<% end %>
+<% if @posts.any?%>
+	<% @posts.each do |post| %>
+		<div style='display: flex; justify-content: center;' class="post-container">
+			<div style='width: 75%' class="card"> 
+				<h1 class="card-header">
+				</h1>
+				<div class="card-body">
+					<h4 class="card-title"> <%= post[:title] %> </h4>
+					<p class="card-text"> <%= post[:content] %></p>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<%else%>
+	<div style='display: flex; justify-content: center;'>
+				<p>Nothing here yet</p>
+		</div>
+<% end %>
