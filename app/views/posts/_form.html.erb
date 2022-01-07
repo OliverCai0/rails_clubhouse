@@ -1,5 +1,7 @@
-<%= form_with(model: @post,html: {:class => '', :id => '#post-creation-form'})  do |form| %>
-	<%= form.hidden_field :user, value: current_user[:id] %>
+<%select_helper = []%>
+<% @current_user_clubs.each {|key,value| select_helper.push([key,value])} %>
+<%= form_with(url: posts_path, html: {:class => '', :id => '#post-creation-form'})  do |form| %>
+	<%= form.hidden_field :user_id, value: current_user[:id] %>
 	<div class="card-body">
 		<div class="field">
 			<%= form.text_field :title, class: 'form-control',placeholder: 'Title' %>
@@ -7,6 +9,11 @@
 		<br/>
 		<div class="field">
 			<%= form.text_area :content, class: 'form-control', placeholder: 'What\'s going on?'  %>
+		</div>
+		<br/>
+		<div class="field">
+			<label>Club</label>
+			<%= select_tag :club_id, options_for_select(select_helper), {class: 'form-select'}%>
 		</div>
 	</div>
 	<div class="card-footer">

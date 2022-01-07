@@ -15,7 +15,8 @@ class ClubsController < ApplicationController
 		@users = User.all
 		@club = Club.new(clubs_params)
 		if @club.save
-			UserClub.create(user_id: User.find(params[:user]), club_id: @new_club)
+			new_relation = UserClub.new(user_id: params[:user], club_id: @club[:id])
+			new_relation.save
 			@club = Club.new
 			flash[:success] = 'Successfully created club!'
 			redirect_to root_path

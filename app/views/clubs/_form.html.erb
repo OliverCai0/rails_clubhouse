@@ -13,9 +13,6 @@
 		<div class="field">
 			<%= form.text_area :desc, class: 'form-control', placeholder: 'What\'s this about?'  %>
 		</div>
-		<div class="field">
-			<%= form.select (current_user.clubs)%>
-		</div>
 	</div>
 	<div class="card-footer">
 		<%= form.submit 'Submit' , class: 'btn btn-primary'%>
