@@ -1,0 +1,8 @@
+<%= form_with(model: [post, comment]) do |form| %>
+	<%= form.hidden_field :user_id, value: current_user[:id] %>
+	<%= form.hidden_field :post_id, value: post[:id] %>
+	<div class="field">
+	<%= form.text_area :content, class: 'form-control', placeholder: 'What\'s this about?' %>
+	</div>
+	<%= form.submit 'Submit' , class: 'btn btn-primary'%>
+<% end %>

@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 	def index
 		@post = Post.new
 		@posts = Post.all
+		@comment = Comment.new
 		@users = {}
 		@user_club = UserClub.all
 		@clubs = {}
