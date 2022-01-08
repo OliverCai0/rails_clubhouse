@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+<div style="height: 50%; display: flex;">
+	<div class="table-responsive" style=" flex-grow: 1;">
+		<table class="table">
+			<thead>
+				<tr>
+					<th> Club Name</th>
+					<th> Club Posts</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @clubs.each do |club|%>
+					<tr>
+						<td>
+							<%= link_to club.name, club, remote: true%>
+						</td>
+						<td>
+							<%= club.posts.count%>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div id="club-display" class="card" style="    flex-grow: 1;">
+		<div id='club-header-display' class="card-header"></div>
+		<div id='club-body-display' class="class-body"></div>
+	</div>
+</div>
+<% else%>
+<p>Nothing here</p>
+<% end %>

@@ -1,0 +1,19 @@
+<% unless in_club%>
+	<%= form_with(url: clubs_signup_path, html: {:class => 'usercard'}) do |form|%>
+		<%= form.hidden_field  :club_id, value: club_id %>
+		<div style="position: absolute;
+	    width: 100%;
+	    bottom: 0;">
+		<div class="field">
+			<%= form.text_field :code, class: 'form-control', placeholder: 'Codeword' %>
+		</div>
+		<%= form.submit 'Submit', class: 'btn btn-primary', style: 'width: 100%;'%>
+		</div>
+	<% end %>
+<% else %>
+	<div style="position: absolute;
+	    width: 100%;
+	    bottom: 0;">
+	    <h4 style="color: red;"> Already Joined </h4>
+	</div>
+<% end %>

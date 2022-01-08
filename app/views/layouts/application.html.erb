@@ -20,6 +20,9 @@
     <% if flash[:success] %>
       <p class="alert alert-success" style="margin-top: 0; margin-bottom: 0;"> <%= flash[:success] %> </p>
     <% end %>
+    <% if flash[:error] %>
+      <p class="alert alert-danger" style="margin-top: 0; margin-bottom: 0;"> <%= flash[:error] %> </p>
+    <% end %>
     <div style="display: flex; flex-direction: column; height: 100%;">
       <%= render 'shared/navbar' %>
       <%= yield %>

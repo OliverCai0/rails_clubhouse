@@ -1,6 +1,6 @@
 <%select_helper = []%>
 <% @current_user_clubs.each {|key,value| select_helper.push([key,value])} %>
-<%= form_with(url: posts_path, html: {:class => '', :id => '#post-creation-form'})  do |form| %>
+<%= form_with(url: posts_path, html: {:class => 'usercard', :id => '#post-creation-form'})  do |form| %>
 	<%= form.hidden_field :user_id, value: current_user[:id] %>
 	<div class="card-body">
 		<div class="field">

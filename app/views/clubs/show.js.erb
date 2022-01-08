@@ -1,0 +1,9 @@
+$('#club-header-display').empty()
+$('#club-body-display').empty()
+$('#club-footer-display').empty()
+$('#club-header-display').append(
+	'<h1><%= @club.name %></h1>'
+	)
+$('#club-body-display').append( 
+	'<h5><%= @club.desc %></h5>' + 
+	'<%= j render "clubs/join", club_id: @club.id, in_club: @in_club %>')
