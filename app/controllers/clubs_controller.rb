@@ -1,6 +1,10 @@
 class ClubsController < ApplicationController
 	before_action :set_clubs, only: [:new] 
 
+	def info
+		render 'clubs/info'
+	end
+
 	def index
 		@clubs = Club.all
 	end

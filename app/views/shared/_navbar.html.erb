@@ -4,13 +4,16 @@
  	</div>
 	<div class="container-fluid" style="flex-direction: row-reverse;">
 		<ul class='navbar-nav'>
-			<% if user_signed_in? %>
 			<li class="nav-item">
 				<%= link_to 'Posts', posts_path, class: 'nav-link'%>
 			</li>
 			<li class="nav-item">
 				<%= link_to 'Dashboard', clubs_path, class: "nav-link"%>
 			</li>
+			<li class="nav-item">
+				<%= link_to 'About', info_path, class: "nav-link"%>
+			</li>
+			<% if user_signed_in? %>
 			<li class='nav-item'>
 				<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link"%>
 			</li>

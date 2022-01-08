@@ -23,7 +23,7 @@
 	</div>
 <% end %>
 <% if @posts.any?%>
-	<% @posts.each do |post| %>
+	<% @posts.reverse_each do |post| %>
 		<%if @current_user_clubs.values.include?(post[:club_id])%>
 			<% @reveal = true %>
 		<% else %>

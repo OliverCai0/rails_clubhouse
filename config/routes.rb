@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :clubs
   post 'clubs/signup', to: 'clubs#signup'
+  get 'info', action: :info, controller: 'clubs'
   resources :posts do
     resources :comments
   end
